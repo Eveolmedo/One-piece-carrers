@@ -17,7 +17,7 @@
                     <a>Home</a>
                 </li>
                 <li>
-                    <a>Create Job</a>
+                    <a class="create-job-btn">Create Job</a>
                 </li>
             </ul>
         </nav>
@@ -36,10 +36,44 @@
                     <option value="category">Category</option>
                 </select>
                 <fieldset>
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <button><i class="fa-solid fa-xmark"></i></button>
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="clear-btn"><i class="fa-solid fa-xmark"></i></button>
                 </fieldset>
             </form>
+        </div>
+        <div id="modal-container" class="modal">
+            <div class="modal-content">
+                <span class="close" id="btn-close-modal">&times;</span>
+                <form class="add-job-form">
+                    <label for="" class="">
+                        Job name
+                    </label>
+                    <input type="text" class="name">
+                    <label for="" class="">
+                        Image
+                    </label>
+                    <input type="text" class="image">
+                    <label for="" class="">
+                        Description
+                    </label>
+                    <input type="text" class="description">
+                    <label for="" class="">
+                        Category
+                    </label>
+                    <input type="text" class="category">
+                    <label for="" class="">
+                        Salary
+                    </label>
+                    <input type="number" class="salary">
+                    <label for="" class="">
+                        Location
+                    </label>
+                    <input type="text" class="location">
+                    <input type="radio" name="fruit" value="si"/>SI
+                    <input type="radio" name="fruit" value="no" checked="checked" />NO
+                    <button>Submit</button>
+                </form>
+            </div>
         </div>
         <div id="job-container">
             

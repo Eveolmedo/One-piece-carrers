@@ -30,6 +30,16 @@ ul {
     font-family: 'Playfair Display', serif;
 }
 
+a:hover,
+a:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+main {
+    background-color: #AEC3B0;
+}
+
 .banner {
     width: 100%;
     height: 70vh;
@@ -76,7 +86,7 @@ select {
     font-family: 'Playfair Display', serif;
 }
 
-button {
+.search-btn, .clear-btn {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -95,6 +105,13 @@ button {
 
 fieldset{
     border: none;
+}
+
+.add-job-form{
+    color: #01161E;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 #job-container {
@@ -120,4 +137,73 @@ fieldset{
 
 .job-image {
     width: 150px;
+}
+
+.map {
+    width: 50%;
+}
+
+.add-job-container {
+    display: none;
+    width: 100%;
+    height: 150vh;
+    padding: 100px;
+    background-size: cover;
+    margin-bottom: 10px;
+
+}
+
+input {
+    padding: 5px;
+    border-radius: 5px;
+    height: 50px;
+    width: 500px;
+    color: #01161E;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: rgb(239, 246, 224, 0.5);
+    border: 2px black solid;
+    font-family: 'Playfair Display', serif;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    border-radius: 10px;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    background-image: url("../assets/map.jpg");
+    background-size: cover;
+}
+
+.close {
+    color: #1f1f1f;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    text-decoration: none;
+    cursor: pointer;
 }
