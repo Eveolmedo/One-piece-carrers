@@ -44,39 +44,38 @@
         <div id="modal-container" class="modal">
             <div class="modal-content">
                 <span class="close" id="btn-close-modal">&times;</span>
-                <form class="add-job-form">
+                <form id="form">
                     <label for="" class="">
                         Job name
                     </label>
-                    <input type="text" class="name">
+                    <input type="text" id="name">
                     <label for="" class="">
                         Image
                     </label>
-                    <input type="text" class="image">
+                    <input type="text" id="image">
                     <label for="" class="">
                         Description
                     </label>
-                    <input type="text" class="description">
+                    <input type="text" id="description">
                     <label for="" class="">
                         Category
                     </label>
-                    <input type="text" class="category">
+                    <input type="text" id="category">
                     <label for="" class="">
                         Salary
                     </label>
-                    <input type="number" class="salary">
+                    <input type="number" id="salary">
                     <label for="" class="">
                         Location
                     </label>
-                    <input type="text" class="location">
-                    <input type="radio" name="fruit" value="si"/>SI
-                    <input type="radio" name="fruit" value="no" checked="checked" />NO
-                    <button>Submit</button>
+                    <input type="text" id="location">
+                    <input type="radio" name="fruit" class="radio" value="si"/>Yes
+                    <input type="radio" name="fruit" class="radio" value="no" checked="checked" />No
+                    <button class="submit-btn">Submit</button>
                 </form>
             </div>
         </div>
         <div id="job-container">
-            
         </div>
     </main>
     <footer>

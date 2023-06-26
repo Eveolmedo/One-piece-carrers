@@ -8,6 +8,13 @@
     list-style: none;
 }
 
+button {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    outline: none;
+}
+
 nav {
     width: 100%;
     display: flex;
@@ -41,32 +48,32 @@ main {
 }
 
 .banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     width: 100%;
     height: 70vh;
+    padding: 40px 50px;
     background-image: url("../assets/banner.png");
     background-size: cover;
-    margin-bottom: 10px;
 }
 
 h1 {
-    width: 70%;
-    padding: 20px;
-    color: #01161E;
+    width: 60%;
     font-size: 70px;
+    color: #01161E;
     text-align: center;
-    font-weight: bold;
     font-family: 'Pirata One', cursive;
 }
 
 span {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 68px;
+    font-size: 70px;
 }
 
 form {
     width: 100%;
     max-width: 1100px;
-    margin-left: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -87,9 +94,6 @@ select {
 }
 
 .search-btn, .clear-btn {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     border: 1px black solid;
     cursor: pointer;
     width: 50px;
@@ -107,7 +111,7 @@ fieldset{
     border: none;
 }
 
-.add-job-form{
+#form{
     color: #01161E;
     display: flex;
     flex-direction: column;
@@ -154,22 +158,28 @@ fieldset{
 }
 
 input {
-    padding: 5px;
-    border-radius: 5px;
+    width: 550px;
     height: 50px;
-    width: 500px;
+    padding: 5px;
+    margin: 15px 0px;
+    border: none;
+    border-radius: 5px;
     color: #01161E;
-    text-align: center;
     font-size: 25px;
-    font-weight: bold;
-    background-color: rgb(239, 246, 224, 0.5);
-    border: 2px black solid;
-    font-family: 'Playfair Display', serif;
+    background-color: #E8DBB2;
+    font-family: 'Pirata One', cursive;
 }
 
+input:focus {
+    border: none;
+    outline: none;
+}
+
+
 label {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
+    font-family: 'Pirata One', cursive;
 }
 
 .modal {
@@ -185,14 +195,12 @@ label {
 }
 
 .modal-content {
-    border-radius: 10px;
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    background-image: url("../assets/map.jpg");
+    width: 50%;
+    margin: 5% auto;
+    padding: 10px 15px 20px 50px;
+    background-image: url("../assets/paper.jpg");
     background-size: cover;
+    border-radius: 10px;
 }
 
 .close {
@@ -206,4 +214,13 @@ label {
 .close:focus {
     text-decoration: none;
     cursor: pointer;
+}
+
+input[type='radio']{
+    height: 20px;
+}
+
+.submit-btn{
+    width: 100px;
+    background-color: red;
 }

@@ -12,18 +12,42 @@ const getJobs = () => {
         .then(job => renderJobs(job))
 }
 
+const registerJob = () => {
+    fetch("https://6487a5a4beba62972790debd.mockapi.io/jobs", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(saveJob())
+    })
+}
+
 getJobs()
 
 const renderJobs = (jobs) => {
-    for (const {image, name, description} of jobs) {
+    for (const { name, category, location} of jobs) {
         $("#job-container").innerHTML += `
             <div class="job-card">
-                <img class="job-image" src="${image}">
+                <img class="job-image" src="">
                 <h3>${name}</h3>
-                <p class="text">${description.slice(0, 130)}...</p>
-                <button class="details-btn">See Details</button>
+                <p class="text">${location}</p>
+                <p class="text">${category}</p>
+                <button class="see-details">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
             </div>
         `
+    }
+}
+
+const saveJob = () => {     
+    return {
+        name: $("#name").value,
+        image: $("#image").value,
+        description: $("#description").value,
+        category: $("#category").value,
+        description: $("#description").value,
+        salary: $("#salary").value,
     }
 }
 
@@ -35,10 +59,11 @@ $("#btn-close-modal").addEventListener("click", () => {
     $("#modal-container").style.display = "none"
 })
 
-window.addEventListener("click", (e) => {
-    if (e.target == $("#modal-container")) {
-        $("#modal-container").style.display = "none"
-    }
+
+$("#form").addEventListener("submit", (e) => {  
+    e.preventDefault() 
+    registerJob()
+    $("#form").reset()
 })
 
 window.addEventListener("keydown", (e) => {
@@ -46,3 +71,4 @@ window.addEventListener("keydown", (e) => {
         $("#modal-container").style.display = "none"
     }
 })
+
