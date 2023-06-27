@@ -72,6 +72,7 @@
                     <input type="radio" name="fruit" class="radio" value="true"/>Yes
                     <input type="radio" name="fruit" class="radio" value="false" checked="checked" />No
                     <button class="submit-btn">Submit</button>
+                    <button type="submit" id="edit-btn">Edit</button>
                 </form>
             </div>
         </div>
@@ -82,6 +83,11 @@
             <div class="job-content">
 
             </div>
+        </div>
+        <div id="alert" role="alert">
+            <p>Are you sure you want to delete the job number <span id="job-selected"></span>?</p>
+            <button id="delete-btn">Delete Job</button>
+            <button id="cancel">Cancel</button>
         </div>
     </main>
     <footer>
