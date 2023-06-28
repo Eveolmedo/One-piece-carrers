@@ -51,7 +51,7 @@ const renderJobs = (jobs) => {
     for (const { id, name, image, category, location} of jobs) {
         $("#jobs-container").innerHTML += `
             <div class="job-card">
-                <img class="job-image" src="">
+                <img src="./assets/category-photos/${category}.jpg">
                 <h3>${name}</h3>
                 <p class="text">${location}</p>
                 <p class="text">${category}</p>
@@ -113,7 +113,6 @@ const renderJobDetail = (job) => {
 const saveJob = () => {     
     return {
         name: $("#name").value,
-        image: $("#image").value,
         description: $("#description").value,
         category: $("#category").value,
         location: $("#location").value,

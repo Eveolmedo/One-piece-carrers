@@ -126,24 +126,33 @@ fieldset{
 }
 
 .job-card{
-    width: 20%;
-    height: 60vh;
-    padding: 10px;
-    border: 1px solid black;
-    margin: 20px 10px;
-    text-align: center;
+    width: 26%;
+    height: 68vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding: 10px;
+    margin: 20px 10px;
+    background-image: url("../assets/rope.png");
+    background-size: cover;
 }
 
-.job-image {
-    width: 150px;
+
+
+.job-card img{
+    width: 200px;
+    margin-top: 10px;
 }
 
-.map {
-    width: 50%;
+.job-card h3{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.job-card i{
+    margin-bottom: 10px;
+    font-size: 30px;
 }
 
 .add-job-container {
@@ -153,7 +162,6 @@ fieldset{
     padding: 100px;
     background-size: cover;
     margin-bottom: 10px;
-
 }
 
 input {
@@ -231,8 +239,8 @@ input[type='radio']{
 
 .banner-2 {
     width: 100%;
-    height: 40vh;
-    background-image: url("../assets/map2.jpg");
+    height: 50vh;
+    background-image: url("../assets/banner-2.jpg");
     background-size: cover;
 }
 
