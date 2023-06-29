@@ -28,7 +28,7 @@ const registerJob = () => {
             'Content-Type': 'Application/json'
         },
         body: JSON.stringify(saveJob())
-    })
+    }).finally(() => window.location.reload())
 }
 
 const editJob = (jobId) => {
@@ -59,14 +59,11 @@ const getParams = () => {
     const fruit = $("#filter-fruit").value
 
     if (location != "location") {
-        const url = new URLSearchParams(`location=${location}`).toString()
-        return url
+        return new URLSearchParams( { location } ).toString()
     } if (category != "category") {
-        const url = new URLSearchParams(`category=${category}`).toString()
-        return url
+        return new URLSearchParams( { category } ).toString()
     } else {
-        const url = new URLSearchParams(`devilFruit=${fruit}`).toString()
-        return url
+        return new URLSearchParams( { fruit } ).toString()
     }
 }
 
