@@ -93,7 +93,7 @@ select {
     border: 1px black solid;
 }
 
-.search-btn, .clear-btn {
+.search-btn, .reset-btn {
     border: 1px black solid;
     cursor: pointer;
     width: 50px;
@@ -137,8 +137,6 @@ fieldset{
     background-image: url("../assets/rope.png");
     background-size: cover;
 }
-
-
 
 .job-card img{
     width: 200px;
@@ -234,7 +232,13 @@ input[type='radio']{
 
 #job-container{
     display: none;
+}
+
+.content-container {
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .banner-2 {
@@ -245,13 +249,36 @@ input[type='radio']{
 }
 
 .job-content {
-    width: 90%;
-    padding: 50px;
+    margin-top: 20px;
+    width: 70%;
+    padding: 130px;
+    font-size: 20px;
+    background-image: url("../assets/rope.png");
+    background-size: cover;
 }
 
-h2 {
-    font-size: 32px;
+.job-content h2 {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Pirata One', cursive;
+    margin-bottom: 20px;
 }
+
+.btn-edit, .btn-delete {
+    width: 130px;
+    padding: 8px;
+    margin: 10px 10px 50px 0px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 20px;
+
+}
+
+.job-content p{
+    margin-bottom: 10px;
+}
+
+
 
 #alert{
     display: none;

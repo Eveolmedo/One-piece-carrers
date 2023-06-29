@@ -47,7 +47,31 @@ const deleteJob = (jobId) => {
     }).finally(() => window.location.reload())
 }
 
+const filterJob = (url) => {
+    fetch(`https://6487a5a4beba62972790debd.mockapi.io/jobs?${url}`)
+        .then(res => res.json())
+        .then(data => renderJobs(data))
+}
+
+const getParams = () => {
+    const location = $("#filter-location").value
+    const category = $("#filter-category").value
+    const fruit = $("#filter-fruit").value
+
+    if (location != "location") {
+        const url = new URLSearchParams(`location=${location}`).toString()
+        return url
+    } if (category != "category") {
+        const url = new URLSearchParams(`category=${category}`).toString()
+        return url
+    } else {
+        const url = new URLSearchParams(`devilFruit=${fruit}`).toString()
+        return url
+    }
+}
+
 const renderJobs = (jobs) => {
+    cleanContainer("#jobs-container")
     for (const { id, name, image, category, location} of jobs) {
         $("#jobs-container").innerHTML += `
             <div class="job-card">
@@ -72,19 +96,22 @@ const renderJobs = (jobs) => {
 }
 
 const renderJobDetail = (job) => {
-    console.log(job)
-    const { id, name, image, description, category, location, salary, fruits } = job
+    const { id, name, description, category, benefits: { vacations, onePiece }, location, salary, devilFruit } = job
     cleanContainer(".job-content")
     $(".job-content").innerHTML += `
         <h2>${name}</h2>
         <p><i class="fa-solid fa-location-dot"></i> ${location}</p>
-        <p><i class="fa-solid fa-grid-2"></i> ${category}</p>
-        <button class="btn-edit" data-id="${id}">Editar</button>
-        <button class="btn-delete" data-id="${id}">Eliminar</button>
+        <p><i class="fa-solid fa-list"></i> ${category}</p>
+        <button class="btn-edit" data-id="${id}"><i class="fa-solid fa-pencil"></i></button>
+        <button class="btn-delete" data-id="${id}"><i class="fa-solid fa-trash"></i></button>
         <p>Job description</p>
         <p>${description}</p>
-        <p>Salary: ${salary}</p>
-        <p>Fruit: $${fruits}</p>
+        <p>Salary: $${salary} berries</p>
+        <p>Vacations: ${vacations}</p>
+        <p>${onePiece ? `Possibility of finding the One Piece` : ""}
+        <p>Necessary devil fruits: ${devilFruit} </p>
+        <button class="btn-edit" data-id="${id}"><i class="fa-solid fa-pencil"></i></button>
+        <button class="btn-delete" data-id="${id}"><i class="fa-solid fa-trash"></i></button>
     `
 
     for (const btn of $$(".btn-edit")) {
@@ -116,18 +143,17 @@ const saveJob = () => {
         description: $("#description").value,
         category: $("#category").value,
         location: $("#location").value,
-        salary: $("#salary").value,
+        salary: $("#salary").valueAsNumber,
         fruits: $(".radio").value,
     }
 }
 
-const populateForm = ({ name, image, description, category, location, salary, fruits }) => {
+const populateForm = ({ name, description, category, location, salary, fruits }) => {
     $("#name").value = name
-    $("#image").value = image
     $("#description").value = description
     $("#category").value = category
     $("#location").value = location
-    $("#salary").value = salary
+    $("#salary").valueAsNumber = salary
     $(".radio").value = fruits
 }
 
@@ -162,6 +188,35 @@ $("#cancel").addEventListener("click", () => {
     showElement("#job-container")
 })
 
+$("#filter-category").addEventListener("click", () => {
+    $("#filter-location").disabled = true;
+    $("#filter-fruit").disabled = true;
+});
+  
+$("#filter-location").addEventListener("click", () => {
+    $("#filter-category").disabled = true;
+    $("#filter-fruit").disabled = true;
+});
+  
+$("#filter-fruit").addEventListener("click", () => {
+    $("#filter-location").disabled = true;
+    $("#filter-category").disabled = true;
+});
+
+$(".search-btn").addEventListener("click", (e) => {
+    e.preventDefault()
+    const url = getParams()
+    filterJob(url)
+})
+
+$(".reset-btn").addEventListener("click", (e) => {
+    e.preventDefault()
+    $("#filter-location").disabled = false;
+    $("#filter-category").disabled = false;
+    $("#filter-fruit").disabled = false;
+    $(".search-form").reset()
+    getJobs()
+})
 
 window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {

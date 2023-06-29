@@ -26,7 +26,7 @@
         <div class="banner">
             <h1><span>F</span>ind your nakama to discover the One Piece</h1>
             <form class="search-form">
-                <select name="" id="" class="">
+                <select name="" id="filter-category">
                     <option value="category">Category</option>
                     <option value="Design and Navigation">Design and Navigation</option>
                     <option value="Martial Arts">Martial Arts</option>
@@ -38,7 +38,7 @@
                     <option value="Arts and Entertainment">Arts and Entertainment</option>
                     <option value="Law Enforcement">Law Enforcement</option>
                 </select>
-                <select name="" id="" class="">
+                <select name="" id="filter-location">
                     <option value="location">Location</option>
                     <option value="Wano">Wano</option>
                     <option value="Water 7">Water 7</option>
@@ -51,15 +51,15 @@
                     <option value="Punk Hazard">Punk Hazard</option>
                     <option value="Arabasta">Arabasta</option>
                 </select>
-                <select name="" id="" class="">
-                    <option value="Fruits">Devil fruits</option>
+                <select name="" id="filter-fruit">
+                    <option value="fruits">Devil fruits</option>
                     <option value="zoan">Zoan</option>
                     <option value="paramecia">Paramecia</option>
                     <option value="logia">Logia</option>
                 </select>
                 <fieldset>
                     <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <button class="clear-btn"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="reset-btn"><i class="fa-solid fa-xmark"></i></button>
                 </fieldset>
             </form>
         </div>
@@ -119,8 +119,8 @@
         </div>
         <div id="job-container">
             <div class="banner-2"></div>
-            <div class="job-content">
-
+            <div class="content-container">
+                <div class="job-content"></div>
             </div>
         </div>
         <div id="alert" role="alert">
