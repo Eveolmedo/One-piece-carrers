@@ -68,28 +68,36 @@ const getParams = () => {
 }
 
 const renderJobs = (jobs) => {
-    cleanContainer("#jobs-container")
-    for (const { id, name, category, location, devilFruit} of jobs) {
-        $("#jobs-container").innerHTML += `
-            <div class="job-card">
-                <img class="card-img" src="./assets/category-photos/${category}.jpg">
-                <h3>${name}</h3>
-                <p>${location}</p>
-                <p>${category}</p>
-                <p><img class="fruit-img" src="./assets/evil-fruit.png"> ${devilFruit.join(" or ")}</p>
-                <button class="see-details-btn" onclick="getJobs('${id}')">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-        `
-    }
-
-    for (const btn of $$(".see-details-btn")){
-        btn.addEventListener("click" , () => {
-            hideElement(".banner")
-            hideElement("#jobs-container")
-            showElement("#job-container")
-        })
+    showElement("#spinner")
+    if (jobs) {
+        cleanContainer("#jobs-container")
+        setTimeout(() => {
+            hideElement("#spinner")
+            for (const { id, name, category, location, devilFruit} of jobs) {
+                $("#jobs-container").innerHTML += `
+                    <div class="job-card">
+                        <img class="card-img" src="./assets/category-photos/${category}.jpg">
+                        <h3>${name}</h3>
+                        <p>${location}</p>
+                        <p>${category}</p>
+                        <p><img class="fruit-img" src="./assets/evil-fruit.png"> ${devilFruit.join(" or ")}</p>
+                        <button class="see-details-btn" onclick="getJobs('${id}')">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                `
+            }
+       
+        
+            for (const btn of $$(".see-details-btn")){
+                btn.addEventListener("click" , () => {
+                    hideElement(".banner")
+                    hideElement("#jobs-container")
+                    hideElement("footer")
+                    showElement("#job-container")
+                })
+            }
+        } , 3000)
     }
 }
 
