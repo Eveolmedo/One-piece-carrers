@@ -67,15 +67,15 @@
             <div class="modal-content">
                 <span class="close" id="btn-close-modal">&times;</span>
                 <form id="form">
-                    <label for="" class="">
+                    <label for="name">
                         Job name
                     </label>
                     <input type="text" id="name">
-                    <label for="" class="">
+                    <label for="description">
                         Description
                     </label>
                     <input type="text" id="description">
-                    <label for="" class="">
+                    <label for="category">
                         Category
                     </label>
                     <select name="" id="category">
@@ -89,14 +89,27 @@
                         <option value="Arts and Entertainment">Arts and Entertainment</option>
                         <option value="Law Enforcement">Law Enforcement</option>
                     </select>
-                    <label for="" class="">
+                    <label for="vacations">
+                        Vacations
+                    </label>
+                    <input type="text" id="vacations">
+                    <fieldset class="radio-section">
+                        <label for="one-piece">
+                            Possibility of finding the One Piece
+                        </label>
+                        <label for="radio" class="radio-label">Yes</label>
+                        <input type="radio" name="one-piece" class="one-piece" value="true"/>
+                        <label for="radio" class="radio-label">No</label>
+                        <input type="radio" name="one-piece" class="one-piece" value="false"/>
+                    </fieldset>
+                    <label for="salary">
                         Salary
                     </label>
-                    <input type="number" id="salary">
-                    <label for="" class="">
+                    <input type="text" id="salary">
+                    <label for="location">
                         Location
                     </label>
-                    <select name="" id="location" class="">
+                    <select name="" id="location">
                         <option value="Wano">Wano</option>
                         <option value="Water 7">Water 7</option>
                         <option value="Zou">Zou</option>
@@ -108,9 +121,18 @@
                         <option value="Punk Hazard">Punk Hazard</option>
                         <option value="Arabasta">Arabasta</option>
                     </select>
-                    <input type="radio" name="fruit" class="radio" value="true"/>Yes
-                    <input type="radio" name="fruit" class="radio" value="false" checked="checked" />No
-                    <button class="submit-btn">Submit</button>
+                    <fieldset class="checkbox-section">
+                        <label for="fruit">
+                            Devil Fruit:
+                        </label>
+                        <input type="checkbox" name="fruit" class="fruit" value="Paramecia"/>
+                        <label for="checkbox" class="checkbox-label">Paramecia</label>
+                        <input type="checkbox" name="fruit" class="fruit" value="Logia"/>
+                        <label for="checkbox" class="checkbox-label">Logia</label>
+                        <input type="checkbox" name="fruit" class="fruit" value="Zoan"/>
+                        <label for="checkbox" class="checkbox-label">Zoan</label>
+                    </fieldset>
+                    <button class="submit-btn">Submit <i class="fa-solid fa-arrow-right"></i></button>
                     <button type="submit" id="edit-btn">Edit</button>
                 </form>
             </div>
@@ -124,9 +146,12 @@
             </div>
         </div>
         <div id="alert" role="alert">
-            <p>Are you sure you want to delete the job number <span id="job-selected"></span>?</p>
-            <button id="delete-btn">Delete Job</button>
-            <button id="cancel">Cancel</button>
+            <div>
+                <p>Are you sure you want to delete the job number <span id="job-selected"></span>?</p>
+                <button id="delete-btn">Delete Job</button>
+                <button id="cancel-btn">Cancel</button>
+            </div>
+            <img src="./assets/luffy.gif">
         </div>
     </main>
     <footer>

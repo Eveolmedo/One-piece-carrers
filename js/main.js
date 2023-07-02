@@ -63,19 +63,20 @@ const getParams = () => {
     } if (category != "category") {
         return new URLSearchParams( { category } ).toString()
     } else {
-        return new URLSearchParams( { fruit } ).toString()
+        return new URLSearchParams(`devilFruit=${fruit}`).toString()
     }
 }
 
 const renderJobs = (jobs) => {
     cleanContainer("#jobs-container")
-    for (const { id, name, image, category, location} of jobs) {
+    for (const { id, name, category, location, devilFruit} of jobs) {
         $("#jobs-container").innerHTML += `
             <div class="job-card">
-                <img src="./assets/category-photos/${category}.jpg">
+                <img class="card-img" src="./assets/category-photos/${category}.jpg">
                 <h3>${name}</h3>
-                <p class="text">${location}</p>
-                <p class="text">${category}</p>
+                <p>${location}</p>
+                <p>${category}</p>
+                <p><img class="fruit-img" src="./assets/evil-fruit.png"> ${devilFruit.join(" or ")}</p>
                 <button class="see-details-btn" onclick="getJobs('${id}')">
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -97,7 +98,7 @@ const renderJobDetail = (job) => {
     cleanContainer(".job-content")
     $(".job-content").innerHTML += `
         <h2>${name}</h2>
-        <p><i class="fa-solid fa-location-dot"></i> ${location}</p>
+        <p><i class="fa-solid fa-location-dot"></i> ${location} <a class="btn-location">See location</a></p>
         <p><i class="fa-solid fa-list"></i> ${category}</p>
         <button class="btn-edit" data-id="${id}"><i class="fa-solid fa-pencil"></i></button>
         <button class="btn-delete" data-id="${id}"><i class="fa-solid fa-trash"></i></button>
@@ -106,9 +107,10 @@ const renderJobDetail = (job) => {
         <p>Salary: $${salary} berries</p>
         <p>Vacations: ${vacations}</p>
         <p>${onePiece ? `Possibility of finding the One Piece` : ""}
-        <p>Necessary devil fruits: ${devilFruit} </p>
+        <p>Necessary devil fruits: ${devilFruit.join(" or ")}</p>
         <button class="btn-edit" data-id="${id}"><i class="fa-solid fa-pencil"></i></button>
         <button class="btn-delete" data-id="${id}"><i class="fa-solid fa-trash"></i></button>
+        <a class="btn-home" href="index.html"><i class="fa-solid fa-house"></i></a>
     `
 
     for (const btn of $$(".btn-edit")) {
@@ -126,6 +128,7 @@ const renderJobDetail = (job) => {
     for (const btn of $$(".btn-delete")) {
         btn.addEventListener("click", () => {
             hideElement("#job-container")
+            hideElement("header")
             showElement("#alert")
             const jobId = btn.getAttribute("data-id")
             $("#delete-btn").setAttribute("data-id", jobId)
@@ -134,27 +137,57 @@ const renderJobDetail = (job) => {
     }
 }
 
-const saveJob = () => {     
+const saveJob = () => {    
+    let selectedFruits = [];
+    const checkboxes = $$(".fruit");
+    
+    for (var i = 0; i < 3; i++) {
+      if (checkboxes[i].checked) {
+        selectedFruits.push(checkboxes[i].value);
+      }
+    }
+
     return {
         name: $("#name").value,
         description: $("#description").value,
         category: $("#category").value,
+        benefits: {
+            vacations: $("#vacations").value,
+            onePiece: $('input[name="one-piece"]:checked').value
+        },
+        salary: $("#salary").value,
         location: $("#location").value,
-        salary: $("#salary").valueAsNumber,
-        fruits: $(".radio").value,
+        devilFruit: selectedFruits,
     }
 }
 
-const populateForm = ({ name, description, category, location, salary, fruits }) => {
+
+const populateForm = ({ name, description, category, benefits: { vacations, onePiece }, location, salary, devilFruit }) => {
     $("#name").value = name
     $("#description").value = description
     $("#category").value = category
+    $("#vacations").value = vacations
+    $("#salary").value = salary
     $("#location").value = location
-    $("#salary").valueAsNumber = salary
-    $(".radio").value = fruits
+    
+    const radioButtons = $$(".one-piece");
+    for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].value === onePiece.toString()) {
+        radioButtons[i].checked = true;
+        }
+    }
+
+    const checkboxes = $$(".fruit");
+    for (var i = 0; i < 3; i++) {
+        const checkbox = checkboxes[i];
+        if (devilFruit.includes(checkbox.value)) {
+            checkbox.checked = true;
+        }
+    }
 }
 
 $(".create-job-btn").addEventListener("click", (e) => {
+    $("#form").reset()
     showElement("#modal-container")
     hideElement("#edit-btn")
     isSubmit = true 
@@ -180,7 +213,7 @@ $("#delete-btn").addEventListener("click", () => {
     deleteJob(jobId)
 })
 
-$("#cancel").addEventListener("click", () => {
+$("#cancel-btn").addEventListener("click", () => {
     hideElement("#alert")
     showElement("#job-container")
 })

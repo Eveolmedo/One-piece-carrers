@@ -3,11 +3,15 @@
 
 *{
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
     font-family: 'Playfair Display', serif;
+    color: #01161E;
 }
+
+/* HEADER */
 
 button {
     border: none;
@@ -22,7 +26,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: #EFF6E0;
-    color: #01161E;
 }
 
 .logo {
@@ -44,9 +47,13 @@ a:focus {
     cursor: pointer;
 }
 
+/* MAIN */
+
 main {
     background-color: #AEC3B0;
 }
+
+/* BANNER */
 
 .banner {
     display: flex;
@@ -72,7 +79,9 @@ span {
     font-size: 70px;
 }
 
-form {
+/* SEARCH FORM */
+
+.search-form {
     width: 100%;
     max-width: 1100px;
     display: flex;
@@ -80,12 +89,11 @@ form {
     align-items: center;
 }
 
-select {
+.search-form select {
     padding: 5px;
     border-radius: 5px;
     height: 50px;
     width: 300px;
-    color: #01161E;
     text-align: center;
     font-size: 25px;
     font-weight: bold;
@@ -99,80 +107,10 @@ select {
     width: 50px;
     border-radius: 50%;
     padding: 10px;
-    color: #01161E;
     font-size: 20px;
     font-weight: bold;
     background-color: rgb(214, 234, 223, 0.5);
     margin-left: 10px;
-}
-
-fieldset{
-    border: none;
-}
-
-#form{
-    color: #01161E;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-#jobs-container {
-    width: 100%;
-    padding: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.job-card{
-    width: 26%;
-    height: 68vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px;
-    margin: 20px 10px;
-    background-image: url("../assets/rope.png");
-    background-size: cover;
-}
-
-.job-card img{
-    width: 200px;
-    margin-top: 10px;
-}
-
-.job-card h3{
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.job-card i{
-    margin-bottom: 10px;
-    font-size: 30px;
-}
-
-.add-job-container {
-    display: none;
-    width: 100%;
-    height: 150vh;
-    padding: 100px;
-    background-size: cover;
-    margin-bottom: 10px;
-}
-
-input {
-    width: 90%;
-    height: 50px;
-    padding: 5px;
-    margin: 15px 0px;
-    border: none;
-    border-radius: 5px;
-    color: #01161E;
-    font-size: 25px;
-    background-color: #E8DBB2;
-    font-family: 'Pirata One', cursive;
 }
 
 input:focus {
@@ -180,12 +118,7 @@ input:focus {
     outline: none;
 }
 
-
-label {
-    font-size: 25px;
-    font-weight: bold;
-    font-family: 'Pirata One', cursive;
-}
+/* FORM NEW JOB AND MODAL */
 
 .modal {
     width: 100%;
@@ -221,14 +154,109 @@ label {
     cursor: pointer;
 }
 
-input[type='radio']{
+#form{
+    padding: 15px 5px;
+}
+
+fieldset{
+    border: none;
+    margin: 15px 0px 30px 0px;
+}
+
+input[type='text'], #form select{
+    width: 90%;
+    height: 50px;
+    padding: 5px;
+    margin: 15px 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    background-color: #E8DBB2;
+    font-family: 'Pirata One', cursive;
+}
+
+label {
+    margin-right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Pirata One', cursive;
+}
+
+.radio-label, .checkbox-label {
+    font-size: 25px;
+    font-weight: normal;
+    margin: 0px 20px;
+}
+
+input[type="radio"], input[type="checkbox"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
     height: 20px;
+    border: 2px solid #999;
+    border-radius: 50%;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+input[type="radio"]:checked, input[type="checkbox"]:checked {
+    background-color: #01161E; 
+    border-color: #01161E; 
 }
 
 .submit-btn{
-    width: 100px;
-    background-color: red;
+    font-family: 'Pirata One', cursive;
+    font-size: 40px;
 }
+
+/* CARDS */
+
+#jobs-container {
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.job-card{
+    width: 26%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin: 20px 10px;
+    background-image: url("../assets/rope.png");
+    background-size: cover;
+}
+
+.card-img{
+    width: 200px;
+    margin-top: 10px;
+}
+
+.job-card h3{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.job-card p{
+    font-size: 18px;
+}
+
+.job-card i{
+    margin-bottom: 8px;
+    font-size: 30px;
+}
+
+.fruit-img {
+    width: 25px;
+}
+
+/* DETAIL JOB */
 
 #job-container{
     display: none;
@@ -266,20 +294,38 @@ input[type='radio']{
     margin-bottom: 20px;
 }
 
-.btn-edit, .btn-delete {
+.job-content p{
+    margin-bottom: 20px;
+}
+
+.btn-location {
+    margin-left: 10px;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.btn-edit, .btn-delete, #delete-btn, #cancel-btn {
     width: 130px;
     padding: 8px;
     margin: 10px 10px 50px 0px;
     border: 1px solid black;
     border-radius: 20px;
     font-size: 20px;
+} 
 
-}
-
-.job-content p{
-    margin-bottom: 20px;
+.btn-home{
+    font-size: 20px;
+    padding: 8px 50px;
+    border: 1px solid black;
+    border-radius: 20px;
 }
 
 #alert{
     display: none;
+    height: 100vh;
+    padding: 20px;
+}
+
+#alert p, #alert span {
+    font-size: 30px;
 }
