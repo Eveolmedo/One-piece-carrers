@@ -32,7 +32,15 @@ nav {
     margin-top: 10px;
 }
 
-#burger-menu {
+.burger-menu {
+    display: none;
+}
+
+.close-burger-menu{
+    display: none;
+}
+
+.menu {
     display: none;
 }
 
@@ -207,7 +215,7 @@ input[type="radio"]:checked, input[type="checkbox"]:checked {
     border-color: #01161E; 
 }
 
-.submit-btn{
+.submit-btn, #edit-btn{
     font-family: 'Pirata One', cursive;
     font-size: 40px;
 }
@@ -350,7 +358,7 @@ footer {
     display: flex;
     align-items: center;
     height: 80px;
-    background-color: #608485;
+    background-color: #EFF6E0;
     font-size: 20px;
 }
 
@@ -417,10 +425,28 @@ footer div{
         display: none;
     }
 
-    #burger-menu{
-        display: block;
+    .burger-menu{
         font-size: 35px;
         margin-right: 30px;
+    }
+
+    .close-burger-menu{
+        font-size: 35px;
+        margin-right: 30px;
+    }
+    
+    .menu-container {
+        width: 100%;
+        height: 8vh;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #d4dac9;
+    }
+
+    .menu {
+        width: 100%;
+        display: flex;
     }
 
     .search-form {
@@ -475,4 +501,8 @@ footer div{
         padding: 8px 28px;
     }
 
+    .checkbox-section{
+        display: flex;
+        flex-direction: column;
+    }
 }

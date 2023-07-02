@@ -238,12 +238,15 @@ const validateForm = () => {
     return name !== "" && description !== "" && vacations !== "" && salary !== "" && oneSelected != false
 }
 
-$(".create-job-btn").addEventListener("click", (e) => {
-    $("#form").reset()
-    showElement("#modal-container")
-    hideElement("#edit-btn")
-    isSubmit = true 
-})
+const buttonsCreateJob = $$(".create-job-btn")
+for (const button of buttonsCreateJob) {
+    button.addEventListener("click", () => {
+        $("#form").reset()
+        showElement("#modal-container")
+        hideElement("#edit-btn")
+        isSubmit = true 
+    })
+}
 
 $("#btn-close-modal").addEventListener("click", () => {
     $("#modal-container").style.display = "none"
@@ -292,6 +295,18 @@ $(".search-btn").addEventListener("click", (e) => {
     e.preventDefault()
     const url = getParams()
     filterJob(url)
+})
+
+$(".burger-menu").addEventListener("click", () => {
+    showElement(".menu-container")
+    showElement(".close-burger-menu")
+    hideElement(".burger-menu")
+})
+
+$(".close-burger-menu").addEventListener("click", () => {
+    showElement(".burger-menu")
+    hideElement(".menu-container")
+    hideElement(".close-burger-menu")
 })
 
 $(".reset-btn").addEventListener("click", (e) => {
