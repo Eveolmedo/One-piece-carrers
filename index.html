@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav>
-            <a href="index.html"><img class="logo" src="./assets/logo-one-piece.png"></a>
+            <a href="index.html"><img class="logo" src="./assets/logo-one-piece.png" alt="logo-one-piece"></a>
             <ul>
                 <li>
                     <a href="index.html">Home</a>
@@ -71,10 +71,12 @@
                         Job name
                     </label>
                     <input type="text" id="name">
+                    <p class="name-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Obligatory field</p>
                     <label for="description">
                         Description
                     </label>
                     <input type="text" id="description">
+                    <p class="description-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Obligatory field</p>
                     <label for="category">
                         Category
                     </label>
@@ -93,6 +95,7 @@
                         Vacations
                     </label>
                     <input type="text" id="vacations">
+                    <p class="vacations-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Obligatory field</p>
                     <fieldset class="radio-section">
                         <label for="one-piece">
                             Possibility of finding the One Piece
@@ -100,12 +103,13 @@
                         <label for="radio" class="radio-label">Yes</label>
                         <input type="radio" name="one-piece" class="one-piece" value="true"/>
                         <label for="radio" class="radio-label">No</label>
-                        <input type="radio" name="one-piece" class="one-piece" value="false"/>
+                        <input type="radio" name="one-piece" class="one-piece" value="false" checked/>
                     </fieldset>
                     <label for="salary">
                         Salary
                     </label>
                     <input type="text" id="salary">
+                    <p class="salary-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Obligatory field</p>
                     <label for="location">
                         Location
                     </label>
@@ -131,6 +135,7 @@
                         <label for="checkbox" class="checkbox-label">Logia</label>
                         <input type="checkbox" name="fruit" class="fruit" value="Zoan"/>
                         <label for="checkbox" class="checkbox-label">Zoan</label>
+                        <p class="fruit-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Choose one</p>
                     </fieldset>
                     <button class="submit-btn">Submit <i class="fa-solid fa-arrow-right"></i></button>
                     <button type="submit" id="edit-btn">Edit</button>
@@ -151,7 +156,7 @@
                 <button id="delete-btn">Delete Job</button>
                 <button id="cancel-btn">Cancel</button>
             </div>
-            <img src="./assets/luffy.gif">
+            <img src="./assets/luffy.gif" alt="gif-luffy">
         </div>
     </main>
     <footer>

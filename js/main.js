@@ -138,12 +138,12 @@ const renderJobDetail = (job) => {
 }
 
 const saveJob = () => {    
-    let selectedFruits = [];
-    const checkboxes = $$(".fruit");
+    let selectedFruits = []
+    const checkboxes = $$(".fruit")
     
     for (var i = 0; i < 3; i++) {
       if (checkboxes[i].checked) {
-        selectedFruits.push(checkboxes[i].value);
+        selectedFruits.push(checkboxes[i].value)
       }
     }
 
@@ -170,20 +170,64 @@ const populateForm = ({ name, description, category, benefits: { vacations, oneP
     $("#salary").value = salary
     $("#location").value = location
     
-    const radioButtons = $$(".one-piece");
+    const radioButtons = $$(".one-piece")
     for (var i = 0; i < radioButtons.length; i++) {
         if (radioButtons[i].value === onePiece.toString()) {
-        radioButtons[i].checked = true;
+        radioButtons[i].checked = true
         }
     }
 
-    const checkboxes = $$(".fruit");
+    const checkboxes = $$(".fruit")
     for (var i = 0; i < 3; i++) {
-        const checkbox = checkboxes[i];
+        const checkbox = checkboxes[i]
         if (devilFruit.includes(checkbox.value)) {
-            checkbox.checked = true;
+            checkbox.checked = true
         }
     }
+}
+
+const validateForm = () => {
+    const name = $("#name").value
+    const description = $("#description").value
+    const vacations = $("#vacations").value
+    const salary = $("#salary").value
+    const devilFruit = [...$$(".fruit")]
+
+    console.log(devilFruit)
+
+    if (name == "") {
+        showElement([".name-error"])
+    } else {
+        hideElement([".name-error"])
+    }
+
+    if (description == "") {
+        showElement([".description-error"])
+    } else {
+        hideElement([".description-error"])
+    }
+
+    if (salary == "") {
+        showElement([".salary-error"])
+    } else {
+        hideElement([".salary-error"])
+    }
+
+    if (vacations == "") {
+        showElement([".vacations-error"])
+    } else {
+        hideElement([".vacations-error"])
+    }
+
+    const oneSelected = devilFruit.some((checkbox) => checkbox.checked )
+    
+    if (!oneSelected) {
+        showElement([".fruit-error"])
+    } else {
+        hideElement([".fruit-error"])
+    }
+
+    return name !== "" && description !== "" && vacations !== "" && salary !== "" && oneSelected != false
 }
 
 $(".create-job-btn").addEventListener("click", (e) => {
@@ -199,13 +243,15 @@ $("#btn-close-modal").addEventListener("click", () => {
 
 $("#form").addEventListener("submit", (e) => {  
     e.preventDefault() 
-    if (isSubmit) {
-        registerJob()
-    } else {
-        const jobId = $("#edit-btn").getAttribute("data-id")
-        editJob(jobId)
+    if (validateForm()) {
+        if (isSubmit) {
+            registerJob()
+            $("#form").reset()
+        } else {
+            const jobId = $("#edit-btn").getAttribute("data-id")
+            editJob(jobId)
+        }
     }
-    $("#form").reset()
 })
 
 $("#delete-btn").addEventListener("click", () => {
@@ -216,22 +262,23 @@ $("#delete-btn").addEventListener("click", () => {
 $("#cancel-btn").addEventListener("click", () => {
     hideElement("#alert")
     showElement("#job-container")
+    showElement("header")
 })
 
 $("#filter-category").addEventListener("click", () => {
-    $("#filter-location").disabled = true;
-    $("#filter-fruit").disabled = true;
-});
+    $("#filter-location").disabled = true
+    $("#filter-fruit").disabled = true
+})
   
 $("#filter-location").addEventListener("click", () => {
-    $("#filter-category").disabled = true;
-    $("#filter-fruit").disabled = true;
-});
+    $("#filter-category").disabled = true
+    $("#filter-fruit").disabled = true
+})
   
 $("#filter-fruit").addEventListener("click", () => {
-    $("#filter-location").disabled = true;
-    $("#filter-category").disabled = true;
-});
+    $("#filter-location").disabled = true
+    $("#filter-category").disabled = true
+})
 
 $(".search-btn").addEventListener("click", (e) => {
     e.preventDefault()
@@ -241,9 +288,9 @@ $(".search-btn").addEventListener("click", (e) => {
 
 $(".reset-btn").addEventListener("click", (e) => {
     e.preventDefault()
-    $("#filter-location").disabled = false;
-    $("#filter-category").disabled = false;
-    $("#filter-fruit").disabled = false;
+    $("#filter-location").disabled = false
+    $("#filter-category").disabled = false
+    $("#filter-fruit").disabled = false
     $(".search-form").reset()
     getJobs()
 })
