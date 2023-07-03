@@ -48,9 +48,11 @@ const deleteJob = (jobId) => {
 }
 
 const filterJob = (url) => {
-    fetch(`https://6487a5a4beba62972790debd.mockapi.io/jobs?${url}`)
-        .then(res => res.json())
-        .then(data => renderJobs(data))
+    fetch(`https://6487a5a4beba62972790debd.mockapi.io/jobs?${url}`, {
+    method: 'GET'
+    })
+    .then(res => res.json())
+    .then(data => renderJobs(data));
 }
 
 const getParams = () => {
@@ -88,7 +90,6 @@ const renderJobs = (jobs) => {
                 `
             }
        
-        
             for (const btn of $$(".see-details-btn")){
                 btn.addEventListener("click" , () => {
                     hideElement(".banner")
@@ -97,7 +98,7 @@ const renderJobs = (jobs) => {
                     showElement("#job-container")
                 })
             }
-        } , 3000)
+        } , 2000)
     }
 }
 
@@ -327,6 +328,3 @@ window.addEventListener("keydown", (e) => {
 window.addEventListener("load", () => {
     getJobs()
 })
-
-
-// cambiar url!!
