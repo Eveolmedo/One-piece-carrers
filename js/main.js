@@ -3,6 +3,7 @@ const $$ = (selector) => document.querySelectorAll(selector)
 
 const cleanContainer = (selector) => $(selector).innerHTML = ""
 
+// Show or hide handlers
 const hideElement = (selector) => $(selector).style.display = "none"
 const showElement = (selector) => $(selector).style.display = "block"
 
@@ -52,9 +53,11 @@ const filterJob = (url) => {
     .then(res => res.json())
     .then(data => {
         renderJobs(data)
-        history.replaceState(null, '', `?${url}`);
-    });
+        history.replaceState(null, '', `?${url}`)
+    })
 }
+
+// FILTER
 
 const getParams = () => {
     const location = $("#filter-location").value
@@ -172,6 +175,8 @@ const saveJob = () => {
     }
 }
 
+// FORM
+
 const populateForm = ({ name, description, category, benefits: { vacations, onePiece }, location, salary, devilFruit }) => {
     $("#name").value = name
     $("#description").value = description
@@ -241,6 +246,8 @@ const validateForm = () => {
 const initializeApp = () => {
     
     getJobs()
+
+    // BUTTONS
 
     const buttonsCreateJob = $$(".create-job-btn")
     for (const button of buttonsCreateJob) {
