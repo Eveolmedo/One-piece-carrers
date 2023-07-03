@@ -3,6 +3,7 @@ const $$ = (selector) => document.querySelectorAll(selector)
 
 const cleanContainer = (selector) => $(selector).innerHTML = ""
 
+// Show or hide handlers
 const hideElement = (selector) => $(selector).style.display = "none"
 const showElement = (selector) => $(selector).style.display = "block"
 
@@ -48,25 +49,29 @@ const deleteJob = (jobId) => {
 }
 
 const filterJob = (url) => {
-    fetch(`https://6487a5a4beba62972790debd.mockapi.io/jobs?${url}`, {
-    method: 'GET'
-    })
+    fetch(`https://6487a5a4beba62972790debd.mockapi.io/jobs?${url}`)
     .then(res => res.json())
-    .then(data => renderJobs(data));
+    .then(data => {
+        renderJobs(data)
+        history.replaceState(null, '', `?${url}`)
+    })
 }
+
+// FILTER
 
 const getParams = () => {
     const location = $("#filter-location").value
     const category = $("#filter-category").value
     const fruit = $("#filter-fruit").value
 
-    if (location != "location") {
+    if (location != "Location") {
         return new URLSearchParams( { location } ).toString()
-    } if (category != "category") {
+    } if (category != "Category") {
         return new URLSearchParams( { category } ).toString()
     } else {
         return new URLSearchParams(`devilFruit=${fruit}`).toString()
     }
+
 }
 
 const renderJobs = (jobs) => {
@@ -170,6 +175,8 @@ const saveJob = () => {
     }
 }
 
+// FORM
+
 const populateForm = ({ name, description, category, benefits: { vacations, onePiece }, location, salary, devilFruit }) => {
     $("#name").value = name
     $("#description").value = description
@@ -237,7 +244,10 @@ const validateForm = () => {
 }
 
 const initializeApp = () => {
+    
     getJobs()
+
+    // BUTTONS
 
     const buttonsCreateJob = $$(".create-job-btn")
     for (const button of buttonsCreateJob) {
@@ -310,8 +320,7 @@ const initializeApp = () => {
         hideElement(".close-burger-menu")
     })
 
-    $(".reset-btn").addEventListener("click", (e) => {
-        e.preventDefault()
+    $(".reset-btn").addEventListener("click", () => {
         $("#filter-location").disabled = false
         $("#filter-category").disabled = false
         $("#filter-fruit").disabled = false
