@@ -48,9 +48,7 @@ const deleteJob = (jobId) => {
 }
 
 const filterJob = (url) => {
-    fetch(`https://6487a5a4beba62972790debd.mockapi.io/jobs?${url}`, {
-    method: 'GET'
-    })
+    fetch(`https://6487a5a4beba62972790debd.mockapi.io/jobs?${url}`)
     .then(res => res.json())
     .then(data => renderJobs(data));
 }
@@ -60,9 +58,9 @@ const getParams = () => {
     const category = $("#filter-category").value
     const fruit = $("#filter-fruit").value
 
-    if (location != "location") {
+    if (location != "Location") {
         return new URLSearchParams( { location } ).toString()
-    } if (category != "category") {
+    } if (category != "Category") {
         return new URLSearchParams( { category } ).toString()
     } else {
         return new URLSearchParams(`devilFruit=${fruit}`).toString()
@@ -237,6 +235,7 @@ const validateForm = () => {
 }
 
 const initializeApp = () => {
+    
     getJobs()
 
     const buttonsCreateJob = $$(".create-job-btn")
