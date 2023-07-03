@@ -1,6 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
 *{
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    font-family: 'Playfair Display', serif;
+    color: #01161E;
+}
+
+/* HEADER */
+
+button {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    outline: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EFF6E0;
+}
+
+.logo {
+    width: 280px;
+    margin-top: 10px;
+}
+
+.burger-menu {
+    display: none;
+}
+
+.close-burger-menu{
+    display: none;
+}
+
+.menu {
+    display: none;
+}
+
+ul {
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* MAIN */
+
+main {
+    background-color: #AEC3B0;
+}
+
+/* BANNER */
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 70vh;
+    padding: 40px 50px;
+    background-image: url("../assets/banner.png");
+    background-size: cover;
+}
+
+h1 {
+    width: 60%;
+    font-size: 70px;
+    text-align: center;
+    font-family: 'Pirata One', cursive;
+}
+
+span {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 70px;
+}
+
+/* SEARCH FORM */
+
+.search-form {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.search-form select {
+    padding: 5px;
+    border-radius: 5px;
+    height: 50px;
+    width: 300px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: rgb(174, 195, 176, 0.5);
+    border: 1px black solid;
+}
+
+.search-btn, .reset-btn {
+    border: 1px black solid;
+    cursor: pointer;
+    width: 50px;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(214, 234, 223, 0.5);
+    margin-left: 10px;
+}
+
+input:focus {
+    border: none;
+    outline: none;
+}
+
+/* FORM NEW JOB AND MODAL */
+
+.modal {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    width: 50%;
+    margin: 5% auto;
+    padding: 10px 15px 20px 30px;
+    background-image: url("../assets/paper.jpg");
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.close {
+    color: #1f1f1f;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#form{
+    padding: 15px 5px;
+}
+
+fieldset{
+    border: none;
+    margin: 15px 0px 30px 0px;
+}
+
+input[type='text'], #form select{
+    width: 90%;
+    height: 50px;
+    padding: 5px;
+    margin: 15px 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    background-color: #E8DBB2;
+    font-family: 'Pirata One', cursive;
+}
+
+label {
+    margin-right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Pirata One', cursive;
+}
+
+.radio-label, .checkbox-label {
+    font-size: 25px;
+    font-weight: normal;
+    margin: 0px 20px;
+}
+
+input[type="radio"], input[type="checkbox"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    border-radius: 50%;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+input[type="radio"]:checked, input[type="checkbox"]:checked {
+    background-color: #01161E; 
+    border-color: #01161E; 
+}
+
+.submit-btn, #edit-btn{
+    font-family: 'Pirata One', cursive;
+    font-size: 40px;
+}
+
+/* CARDS */
+
+#spinner div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#jobs-container {
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.job-card{
+    width: 355px;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin: 20px 10px;
+    background-image: url("../assets/rope.png");
+    background-size: cover;
+}
+
+
+.card-img{
+    width: 200px;
+    margin-top: 10px;
+}
+
+.job-card h3{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.job-card p{
+    font-size: 18px;
+}
+
+.job-card i{
+    margin-bottom: 8px;
+    font-size: 30px;
+}
+
+.fruit-img {
+    width: 25px;
+}
+
+/* JOB DETAILS */
+
+#job-container{
+    display: none;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner-2 {
+    width: 100%;
+    height: 50vh;
+    background-image: url("../assets/banner-2.jpg");
+    background-size: cover;
+}
+
+.job-content {
+    width: 1050px;
+    padding: 160px;
+    font-size: 20px;
+    background-image: url("../assets/rope.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.job-content h2 {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Pirata One', cursive;
+    margin-bottom: 20px;
+}
+
+.job-content p{
+    margin-bottom: 20px;
+}
+
+.btn-location {
+    margin-left: 10px;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.btn-edit, .btn-delete, #delete-btn, #cancel-btn {
+    width: 130px;
+    padding: 8px;
+    margin: 10px 10px 50px 0px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 20px;
+} 
+
+.btn-home{
+    font-size: 20px;
+    padding: 8px 50px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+#alert{
+    display: none;
+    height: 100vh;
+    padding: 20px;
+}
+
+#alert p, #alert span {
+    font-size: 30px;
+}
+
+.error {
+    display: none;
+    color: red;
+    margin-bottom: 10px;
+}
+
+.error i {
+    color: red;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: #EFF6E0;
+    font-size: 20px;
+}
+
+footer div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1200px){
+
+    .banner {
+        height: 70vh;
+        padding: 30px;
+    }
+    
+    h1 {
+        width: 100%;
+        font-size: 60px;
+    }
+    
+    .search-form {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .job-card{
+        width: 355px;
+        height: 88vh;
+    }
+
+    .modal-content{
+        width: 80%;
+    }
+
+    .banner-2 {
+        display: none;
+    }
+}
+
+@media (max-width: 1050px){
+    .job-content {
+        width: 100%;
+        padding: 50px;
+        background-image: none;
+    }
+
+}
+
+@media (max-width: 700px){
+    h1 {
+        font-size: 40px;
+    }
+
+    h1 span{
+        font-size: 40px;
+    }
+
+    ul {
+        display: none;
+    }
+
+    .burger-menu{
+        font-size: 35px;
+        margin-right: 30px;
+    }
+
+    .close-burger-menu{
+        font-size: 35px;
+        margin-right: 30px;
+    }
+    
+    .menu-container {
+        width: 100%;
+        height: 8vh;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #d4dac9;
+    }
+
+    .menu {
+        width: 100%;
+        display: flex;
+    }
+
+    .search-form {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .search-form select {
+        width: 170px;
+    }
+
+    .search-form fieldset {
+        width: 100%;
+        text-align: center;
+    }
+   
+    footer{
+        display: none;
+    }
+}
+
+@media (max-width: 500px){
+    .banner {
+        padding: 15px;
+    }
+
+    .search-form select {
+        margin-left: 10px;
+        margin-bottom: 10px;
+        width: 150px;
+    }
+
+    #jobs-container{
+        padding: 10px;
+    }
+
+    .job-card{
+        width: 330px;
+        height: 56vh;
+    }
+
+    .btn-edit, .btn-delete, #delete-btn, #cancel-btn {
+        width: 80px;
+        padding: 8px;
+        margin: 10px 0px;
+        border: 1px solid black;
+        border-radius: 20px;
+        font-size: 20px;
+    } 
+
+    .btn-home{
+        padding: 8px 28px;
+    }
+
+    .checkbox-section{
+        display: flex;
+        flex-direction: column;
+    }
 }

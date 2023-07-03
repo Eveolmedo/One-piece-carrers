@@ -3,15 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Icons library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="crossorigin="anonymous"referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="./css/styles.css">
-    <title>Portal de empleos One Piece</title>
+    <link rel="icon" href="./assets/hat.png">
+    <title>One Piece Careers</title>
 </head>
 <body>
     <header>
+        <a id="top"></a>
+        <nav>
+            <a href="index.html"><img class="logo" src="./assets/logo-one-piece.png" alt="logo-one-piece"></a>
+            <button class="burger-menu">
+                <i class="fas fa-bars"></i>
+            </button> 
+            <button class="close-burger-menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a class="create-job-btn">Create Job</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="menu-container">
+            <ul class="menu">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a class="create-job-btn">Create Job</a>
+            </li>
+            </ul>
+        </div>
     </header>
     <main>
+        <div class="banner">
+            <h1><span>F</span>ind your nakama to discover the One Piece</h1>
+            <form class="search-form">
+                <select name="" id="filter-category">
+                    <option value="" disabled selected>Category</option>
+                    <option value="Design and Navigation">Design and Navigation</option>
+                    <option value="Martial Arts">Martial Arts</option>
+                    <option value="Research and Discovery">Research and Discovery</option>
+                    <option value="Culinary Arts">Culinary Arts</option>
+                    <option value="Navigation and Cartography">Navigation and Cartography</option>
+                    <option value="Finance and Administration">Finance and Administration</option>
+                    <option value="Leadership">Leadership</option>
+                    <option value="Arts and Entertainment">Arts and Entertainment</option>
+                    <option value="Law Enforcement">Law Enforcement</option>
+                </select>
+                <select name="" id="filter-location">
+                    <option value="" disabled selected>Location</option>
+                    <option value="Wano">Wano</option>
+                    <option value="Water 7">Water 7</option>
+                    <option value="Zou">Zou</option>
+                    <option value="Skypea">Skypea</option>
+                    <option value="Ennies Lobby">Ennies Lobby</option>
+                    <option value="Impel Down">Impel Down</option>
+                    <option value="Sabaody">Sabaody</option>
+                    <option value="Dressrosa">Dressrosa</option>
+                    <option value="Punk Hazard">Punk Hazard</option>
+                    <option value="Arabasta">Arabasta</option>
+                </select>
+                <select name="" id="filter-fruit">
+                    <option value="" disabled selected>Devil fruits</option>
+                    <option value="zoan">Zoan</option>
+                    <option value="paramecia">Paramecia</option>
+                    <option value="logia">Logia</option>
+                </select>
+                <fieldset>
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="reset-btn"><i class="fa-solid fa-xmark"></i></button>
+                </fieldset>
+            </form>
+        </div>
+        <div id="modal-container" class="modal">
+            <div class="modal-content">
+                <span class="close" id="btn-close-modal">&times;</span>
+                <form id="form">
+                    <label for="name">
+                        Job name
+                    </label>
+                    <input type="text" id="name">
+                    <p class="name-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Obligatory field</p>
+                    <label for="description">
+                        Description
+                    </label>
+                    <input type="text" id="description">
+                    <p class="description-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Obligatory field</p>
+                    <label for="category">
+                        Category
+                    </label>
+                    <select name="" id="category">
+                        <option value="Design and Navigation">Design and Navigation</option>
+                        <option value="Martial Arts">Martial Arts</option>
+                        <option value="Research and Discovery">Research and Discovery</option>
+                        <option value="Culinary Arts">Culinary Arts</option>
+                        <option value="Navigation and Cartography">Navigation and Cartography</option>
+                        <option value="Finance and Administration">Finance and Administration</option>
+                        <option value="Leadership">Leadership</option>
+                        <option value="Arts and Entertainment">Arts and Entertainment</option>
+                        <option value="Law Enforcement">Law Enforcement</option>
+                    </select>
+                    <label for="vacations">
+                        Vacations
+                    </label>
+                    <input type="text" id="vacations">
+                    <p class="vacations-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Obligatory field</p>
+                    <fieldset class="radio-section">
+                        <label for="one-piece">
+                            Possibility of finding the One Piece
+                        </label>
+                        <label for="radio" class="radio-label">Yes</label>
+                        <input type="radio" name="one-piece" class="one-piece" value="true"/>
+                        <label for="radio" class="radio-label">No</label>
+                        <input type="radio" name="one-piece" class="one-piece" value="false" checked/>
+                    </fieldset>
+                    <label for="salary">
+                        Salary
+                    </label>
+                    <input type="text" id="salary">
+                    <p class="salary-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Obligatory field</p>
+                    <label for="location">
+                        Location
+                    </label>
+                    <select name="" id="location">
+                        <option value="Wano">Wano</option>
+                        <option value="Water 7">Water 7</option>
+                        <option value="Zou">Zou</option>
+                        <option value="Skypea">Skypea</option>
+                        <option value="Ennies Lobby">Ennies Lobby</option>
+                        <option value="Impel Down">Impel Down</option>
+                        <option value="Sabaody">Sabaody</option>
+                        <option value="Dressrosa">Dressrosa</option>
+                        <option value="Punk Hazard">Punk Hazard</option>
+                        <option value="Arabasta">Arabasta</option>
+                    </select>
+                    <fieldset class="checkbox-section">
+                        <label for="fruit">
+                            Devil Fruit:
+                        </label>
+                        <input type="checkbox" name="fruit" class="fruit" value="Paramecia"/>
+                        <label for="checkbox" class="checkbox-label">Paramecia</label>
+                        <input type="checkbox" name="fruit" class="fruit" value="Logia"/>
+                        <label for="checkbox" class="checkbox-label">Logia</label>
+                        <input type="checkbox" name="fruit" class="fruit" value="Zoan"/>
+                        <label for="checkbox" class="checkbox-label">Zoan</label>
+                        <p class="fruit-error error"><i class="fa-sharp fa-solid fa-circle-exclamation mr-2"></i> Choose one</p>
+                    </fieldset>
+                    <button class="submit-btn">Submit <i class="fa-solid fa-arrow-right"></i></button>
+                    <button type="submit" id="edit-btn">Edit</button>
+                </form>
+            </div>
+        </div>
+        <div id="spinner">
+            <div>
+                <img src="./assets/spinner.gif">
+            </div>
+        </div>
+        <div id="jobs-container">
+        </div>
+        <div id="job-container">
+            <div class="banner-2"></div>
+            <div class="content-container">
+                <div class="job-content"></div>
+            </div>
+        </div>
+        <div id="alert" role="alert">
+            <div>
+                <p>Are you sure you want to delete the job number <span id="job-selected"></span>?</p>
+                <button id="delete-btn">Delete Job</button>
+                <button id="cancel-btn">Cancel</button>
+            </div>
+            <img src="./assets/luffy.gif" alt="gif-luffy">
+        </div>
     </main>
     <footer>
+        <div>
+            <p><i class="fa-regular fa-copyright"></i> One Piece</p>
+            <p>By: Evelyn Olmedo</p>
+            <a href="#top"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+        </div>
     </footer>
     <script src="./js/main.js"></script>
 </body>
