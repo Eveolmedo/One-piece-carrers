@@ -107,7 +107,7 @@ const renderJobDetail = (job) => {
     cleanContainer(".job-content")
     $(".job-content").innerHTML += `
         <h2>${name}</h2>
-        <p><i class="fa-solid fa-location-dot"></i> ${location} <a class="btn-location">See location</a></p>
+        <p><i class="fa-solid fa-location-dot"></i> ${location} <a href="https://odamap.khooz.com/" target="_blank" class="btn-location">See location</a></p>
         <p><i class="fa-solid fa-list"></i> ${category}</p>
         <button class="btn-edit" data-id="${id}"><i class="fa-solid fa-pencil"></i></button>
         <button class="btn-delete" data-id="${id}"><i class="fa-solid fa-trash"></i></button>
@@ -170,7 +170,6 @@ const saveJob = () => {
     }
 }
 
-
 const populateForm = ({ name, description, category, benefits: { vacations, onePiece }, location, salary, devilFruit }) => {
     $("#name").value = name
     $("#description").value = description
@@ -201,8 +200,6 @@ const validateForm = () => {
     const vacations = $("#vacations").value
     const salary = $("#salary").value
     const devilFruit = [...$$(".fruit")]
-
-    console.log(devilFruit)
 
     if (name == "") {
         showElement([".name-error"])
@@ -239,92 +236,95 @@ const validateForm = () => {
     return name !== "" && description !== "" && vacations !== "" && salary !== "" && oneSelected != false
 }
 
-const buttonsCreateJob = $$(".create-job-btn")
-for (const button of buttonsCreateJob) {
-    button.addEventListener("click", () => {
-        $("#form").reset()
-        showElement("#modal-container")
-        hideElement("#edit-btn")
-        isSubmit = true 
+const initializeApp = () => {
+    getJobs()
+
+    const buttonsCreateJob = $$(".create-job-btn")
+    for (const button of buttonsCreateJob) {
+        button.addEventListener("click", () => {
+            $("#form").reset()
+            showElement("#modal-container")
+            hideElement("#edit-btn")
+            isSubmit = true 
+        })
+    }
+
+    $("#btn-close-modal").addEventListener("click", () => {
+        $("#modal-container").style.display = "none"
     })
+
+    $("#form").addEventListener("submit", (e) => {  
+        e.preventDefault() 
+        if (validateForm()) {
+            if (isSubmit) {
+                registerJob()
+                $("#form").reset()
+            } else {
+                const jobId = $("#edit-btn").getAttribute("data-id")
+                editJob(jobId)
+            }
+        }
+    })
+
+    $("#delete-btn").addEventListener("click", () => {
+        const jobId = $("#delete-btn").getAttribute("data-id")
+        deleteJob(jobId)
+    })
+
+    $("#cancel-btn").addEventListener("click", () => {
+        hideElement("#alert")
+        showElement("#job-container")
+        showElement("header")
+    })
+
+    $("#filter-category").addEventListener("click", () => {
+        $("#filter-location").disabled = true
+        $("#filter-fruit").disabled = true
+    })
+    
+    $("#filter-location").addEventListener("click", () => {
+        $("#filter-category").disabled = true
+        $("#filter-fruit").disabled = true
+    })
+    
+    $("#filter-fruit").addEventListener("click", () => {
+        $("#filter-location").disabled = true
+        $("#filter-category").disabled = true
+    })
+
+    $(".search-btn").addEventListener("click", (e) => {
+        e.preventDefault()
+        const url = getParams()
+        filterJob(url)
+    })
+
+    $(".burger-menu").addEventListener("click", () => {
+        showElement(".menu-container")
+        showElement(".close-burger-menu")
+        hideElement(".burger-menu")
+    })
+
+    $(".close-burger-menu").addEventListener("click", () => {
+        showElement(".burger-menu")
+        hideElement(".menu-container")
+        hideElement(".close-burger-menu")
+    })
+
+    $(".reset-btn").addEventListener("click", (e) => {
+        e.preventDefault()
+        $("#filter-location").disabled = false
+        $("#filter-category").disabled = false
+        $("#filter-fruit").disabled = false
+        $(".search-form").reset()
+        getJobs()
+    })
+
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            $("#modal-container").style.display = "none"
+        }
+    })
+
 }
 
-$("#btn-close-modal").addEventListener("click", () => {
-    $("#modal-container").style.display = "none"
-})
-
-$("#form").addEventListener("submit", (e) => {  
-    e.preventDefault() 
-    if (validateForm()) {
-        if (isSubmit) {
-            registerJob()
-            $("#form").reset()
-        } else {
-            const jobId = $("#edit-btn").getAttribute("data-id")
-            editJob(jobId)
-        }
-    }
-})
-
-$("#delete-btn").addEventListener("click", () => {
-    const jobId = $("#delete-btn").getAttribute("data-id")
-    deleteJob(jobId)
-})
-
-$("#cancel-btn").addEventListener("click", () => {
-    hideElement("#alert")
-    showElement("#job-container")
-    showElement("header")
-})
-
-$("#filter-category").addEventListener("click", () => {
-    $("#filter-location").disabled = true
-    $("#filter-fruit").disabled = true
-})
-  
-$("#filter-location").addEventListener("click", () => {
-    $("#filter-category").disabled = true
-    $("#filter-fruit").disabled = true
-})
-  
-$("#filter-fruit").addEventListener("click", () => {
-    $("#filter-location").disabled = true
-    $("#filter-category").disabled = true
-})
-
-$(".search-btn").addEventListener("click", (e) => {
-    e.preventDefault()
-    const url = getParams()
-    filterJob(url)
-})
-
-$(".burger-menu").addEventListener("click", () => {
-    showElement(".menu-container")
-    showElement(".close-burger-menu")
-    hideElement(".burger-menu")
-})
-
-$(".close-burger-menu").addEventListener("click", () => {
-    showElement(".burger-menu")
-    hideElement(".menu-container")
-    hideElement(".close-burger-menu")
-})
-
-$(".reset-btn").addEventListener("click", (e) => {
-    e.preventDefault()
-    $("#filter-location").disabled = false
-    $("#filter-category").disabled = false
-    $("#filter-fruit").disabled = false
-    $(".search-form").reset()
-    getJobs()
-})
-
-window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        $("#modal-container").style.display = "none"
-    }
-})
-
-window.addEventListener("load", () => {
-    getJobs()
-})
+window.addEventListener("load", initializeApp)
