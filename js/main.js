@@ -50,7 +50,10 @@ const deleteJob = (jobId) => {
 const filterJob = (url) => {
     fetch(`https://6487a5a4beba62972790debd.mockapi.io/jobs?${url}`)
     .then(res => res.json())
-    .then(data => renderJobs(data));
+    .then(data => {
+        renderJobs(data)
+        history.replaceState(null, '', `?${url}`);
+    });
 }
 
 const getParams = () => {
@@ -65,6 +68,7 @@ const getParams = () => {
     } else {
         return new URLSearchParams(`devilFruit=${fruit}`).toString()
     }
+
 }
 
 const renderJobs = (jobs) => {
@@ -309,8 +313,7 @@ const initializeApp = () => {
         hideElement(".close-burger-menu")
     })
 
-    $(".reset-btn").addEventListener("click", (e) => {
-        e.preventDefault()
+    $(".reset-btn").addEventListener("click", () => {
         $("#filter-location").disabled = false
         $("#filter-category").disabled = false
         $("#filter-fruit").disabled = false
